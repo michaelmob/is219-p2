@@ -49,8 +49,8 @@ var mUrl = 'images.json';
 
 // Elements
 var $photo = document.querySelector('#photo');
-var $detailsButton = document.querySelector('.');
 var $details = document.querySelector('.details');
+var $more = document.querySelector('.moreIndicator');
 var $prev = document.querySelector('#prevPhoto');
 var $next = document.querySelector('#nextPhoto');
 
@@ -69,6 +69,14 @@ function swapPhoto() {
 
   // Set photo image url
   $photo.src = mImages[mCurrentIndex].img;
+
+  // Set photo details
+  $details.querySelector(".location").innerHTML =
+    "<strong>Location: </strong>" + mImages[mCurrentIndex].location;
+  $details.querySelector(".description").innerHTML =
+    "<strong>Description: </strong>" + mImages[mCurrentIndex].description;
+  $details.querySelector(".date").innerHTML =
+    "<strong>Date: </strong>" + mImages[mCurrentIndex].date;
 }
 
 
@@ -140,5 +148,12 @@ $next.onclick = function() {
 $prev.onclick = function() {
   mCurrentIndex--;
   swapPhoto();
+};
 
+
+/*
+ * More button click.
+ */
+$more.onclick = function() {
+  $more.classList.toggle("active");
 };
