@@ -1,36 +1,3 @@
-// requestAnim shim layer by Paul Irish
-window.requestAnimFrame = (function(){
-  return (
-    window.requestAnimationFrame || window.webkitRequestAnimationFrame || 
-    window.mozRequestAnimationFrame || window.oRequestAnimationFrame || 
-    window.msRequestAnimationFrame || function(callback) {
-      window.setTimeout(callback, 1000 / 60);
-    }
-  );
-})();
-
-
-// example code from mr doob : http://mrdoob.com/lab/javascript/requestanimationframe/
-
-animate();
-
-var mLastFrameTime = 0;
-var mWaitTime = 5000; //time in ms
-function animate() {
-  requestAnimFrame(animate);
-  var currentTime = new Date().getTime();
-  if (mLastFrameTime === 0) {
-    mLastFrameTime = currentTime;
-  }
-
-  if ((currentTime - mLastFrameTime) > mWaitTime) {
-    swapPhoto();
-    mLastFrameTime = currentTime;
-  }
-}
-
-/************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
-
 // Counter for the mImages array
 var mCurrentIndex = 0;
 
@@ -46,6 +13,12 @@ var mJson;
 // URL for the JSON to load by default
 var mUrl = 'images.json';
 
+// Slideshow interval
+var mSlideshowInterval = 5000;
+
+// Store interval
+var mInterval;
+
 
 // Elements
 var $photo = document.querySelector('#photo');
@@ -53,6 +26,27 @@ var $details = document.querySelector('.details');
 var $more = document.querySelector('.moreIndicator');
 var $prev = document.querySelector('#prevPhoto');
 var $next = document.querySelector('#nextPhoto');
+
+
+/*
+ * Start image slideshow.
+ */
+function startSlideshowInterval() {
+  mInterval = setInterval(function() {
+    mCurrentIndex++;
+    swapPhoto();
+  }, mSlideshowInterval);
+}
+
+
+/*
+ * Clear Interval and restart slideshow.
+ */
+function resetSlideshowInterval() {
+  clearInterval(mInterval);
+  startSlideshowInterval();
+}
+
 
 
 /*
@@ -125,11 +119,15 @@ window.addEventListener('load', function() {
     mJson.images.forEach(function(image) {
       mImages.push(GalleryImage(image));
     });
+
+    swapPhoto();
+    startSlideshowInterval();
   };
 
   // Create and send GET request
   mRequest.open('GET', '/' + (GetJSONFileName() || mUrl), true);
   mRequest.send();
+
 });
 
 
@@ -139,6 +137,7 @@ window.addEventListener('load', function() {
 $next.onclick = function() {
   mCurrentIndex++;
   swapPhoto();
+  resetSlideshowInterval();
 };
 
 
@@ -148,6 +147,7 @@ $next.onclick = function() {
 $prev.onclick = function() {
   mCurrentIndex--;
   swapPhoto();
+  resetSlideshowInterval();
 };
 
 
