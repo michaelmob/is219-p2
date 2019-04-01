@@ -32,6 +32,13 @@ body {
   z-index: 3;
   opacity: .8;
   bottom: 55px;
+  transform: rotate(-90deg);
+  transition: 500ms all;
+}
+
+.moreIndicator.active {
+  transform: rotate(90deg) !important;
+}
 
 .thumbnail {
   position: relative;
