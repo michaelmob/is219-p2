@@ -1,3 +1,4 @@
+
 // requestAnim shim layer by Paul Irish
 window.requestAnimFrame = (function(){
   return (
@@ -56,16 +57,6 @@ var mJson;
 var mUrl = 'insert_url_here_to_image_json';
 
 
-//You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
-//@param A GalleryImage object. Use this method for an event handler for loading a gallery Image object (optional).
-function makeGalleryImageOnloadCallback(galleryImage) {
-  return function(e) {
-    galleryImage.img = e.target;
-    mImages.push(galleryImage);
-  }
-}
-
-
 /*
  * Get name of JSON file to fetch from (?json=images.json).
  */
@@ -82,7 +73,16 @@ function GetJSONFileName() {
 }
 
 
-function GalleryImage(location, description, date, img) {
+/*
+ * Create GalleryImage object to be inserted into mImages.
+ */
+function GalleryImage(image) {
+  return {
+    location: image.imgLocation,
+    description: image.description,
+    date: image.date,
+    img: image.imgPath
+  };
 }
 
 
