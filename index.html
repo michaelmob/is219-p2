@@ -9,20 +9,23 @@
       <p class="banner">mcm53 - IS219 Slide Show</p>
       <div id="slideShow">
         <div class="photoHolder">
-          <img class="thumbnail" id="photo" src="http://placehold.it/518x389?text=Welcome+to+my+Gallery" alt="Gallery Image"/>
+          <img class="thumbnail" id="photo" alt="Gallery Image"
+            height="389" width="518" style="object-fit: cover"
+            src="http://placehold.it/518x389?text=Welcome+to+my+Gallery" />
         </div>
         <img class="moreIndicator" src="img/more.png" alt="More Content"/>
         <div id="nav">
           <img id="prevPhoto" src="img/arrow.png" alt="Previous Photo"/>
           <img id="nextPhoto" src="img/arrow.png" alt="Next Photo"/>
         </div>
-        <div class="details">
+        <div class="details" style="display:none">
           <p class="location">Location: </p>
           <p class="description">Description: </p>
           <p class="date">Date: </p>
         </div>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src='js/gallery.js'></script>
   </body>
 </html>
