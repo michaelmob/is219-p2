@@ -64,6 +64,22 @@ function makeGalleryImageOnloadCallback(galleryImage) {
     mImages.push(galleryImage);
   }
 }
+
+
+/*
+ * Get name of JSON file to fetch from (?json=images.json).
+ */
+function GetJSONFileName() {
+  const match = window.location.search
+    .matchAll(/(?!\?\&)json=(.*?)(?:&|$)/gm).next().value;
+
+  if (match === undefined)
+    return;
+
+  return match[1];
+}
+
+
 function GalleryImage(location, description, date, img) {
 }
 
