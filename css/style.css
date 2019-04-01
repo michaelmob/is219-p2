@@ -1,0 +1,72 @@
+body {
+  overflow: auto;
+  font-family: 'Century Gothic', sans-serif;
+  background-image: url(../img/geometry.jpg);
+}
+
+#photoBooth {
+  margin-top: .2em;
+  padding: 10px;
+  width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border-radius: 2px;
+}	
+
+#slideShow {	
+  position: relative;
+}
+
+.photoHolder {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.moreIndicator {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  left: 300px;
+  z-index: 3;
+  opacity: .8;
+  bottom: 55px;
+
+.thumbnail {
+  position: relative;
+  box-shadow: 1px 3px 20px 0px;
+}
+
+.banner {
+  text-align: center;
+  font-size: 1.25em;
+}
+
+#nav {
+  clear: both;
+  position: relative;
+}
+
+#prevPhoto, #nextPhoto {
+  height: 42px;
+  width: 42px;
+}
+
+#prevPhoto {
+  transform: rotate(180deg);
+}
+
+#nextPhoto {
+  float: right;
+}
+
+.details p {
+  margin-top: 20px;
+}
+
+.details {
+  border: 1px #000 dashed;
+  padding: 0px 10px;
+  margin: 20px 0px;
+}
