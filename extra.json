@@ -1,0 +1,28 @@
+{
+  "images": [
+    {
+      "imgPath": "https://d1ia71hq4oe7pn.cloudfront.net/photo/67364581-1280px.jpg",
+      "imgLocation": "Massachusetts",
+      "description": "Lanky female blackbird.",
+      "date": "05/29/2015"
+    },
+    {
+      "imgPath": "https://d1ia71hq4oe7pn.cloudfront.net/photo/67363921-1280px.jpg",
+      "imgLocation": "Florida",
+      "description": "Female Boat-tailed Grackle.",
+      "date": "10/11/2016"
+    },
+    {
+      "imgPath": "https://d1ia71hq4oe7pn.cloudfront.net/photo/67373991-1280px.jpg",
+      "imgLocation": "Oregon",
+      "description": "Male Brewer Blackbird.",
+      "date": "01/15/2017"
+    },
+    {
+      "imgPath": "https://d1ia71hq4oe7pn.cloudfront.net/photo/67362321-1280px.jpg",
+      "imgLocation": "California",
+      "description": "Brown-headed Cowbird.",
+      "date": "03/17/2008"
+    }
+  ]
+}
