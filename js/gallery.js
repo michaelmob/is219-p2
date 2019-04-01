@@ -104,7 +104,25 @@ function GalleryImage(image) {
 }
 
 
-$(document).ready(function() {
-  // This initially hides the photos' metadata information
-  $('.details').eq(0).hide();
+window.addEventListener('load', function() {
+  // Run when request is complete
+  mRequest.onload = function(e) {
+    // Only continue if request was successful
+    if (e.target.status !== 200)
+      return;
+
+    // Attempt to parse response
+    mJson = JSON.parse(e.target.responseText);
+    if (typeof mJson.images === undefined)
+      return;
+
+    // Add images to mImage
+    mJson.images.forEach(function(image) {
+      mImages.push(GalleryImage(image));
+    });
+  };
+
+  // Create and send GET request
+  mRequest.open('GET', '/' + (GetJSONFileName() || mUrl), true);
+  mRequest.send();
 });
