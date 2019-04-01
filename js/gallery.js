@@ -31,14 +31,6 @@ function animate() {
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
-function swapPhoto() {
-  //Add code here to access the #slideShow element.
-  //Access the img element and replace its source
-  //with a new image from your images array which is loaded 
-  //from the JSON string
-  console.log('swap photo');
-}
-
 // Counter for the mImages array
 var mCurrentIndex = 0;
 
@@ -53,6 +45,24 @@ var mJson;
 
 // URL for the JSON to load by default
 var mUrl = 'images.json';
+
+
+// Elements
+var $photo = document.querySelector('#photo');
+var $prev = document.querySelector('#prevPhoto');
+var $next = document.querySelector('#nextPhoto');
+
+
+/*
+ * Set $photo img property with current image index.
+ */
+function swapPhoto() {
+  //Add code here to access the #slideShow element.
+  //Access the img element and replace its source
+  //with a new image from your images array which is loaded 
+  //from the JSON string
+  console.log('swap photo');
+}
 
 
 /*
@@ -84,7 +94,7 @@ function GalleryImage(image) {
 }
 
 
-window.addEventListener("load", function() {
+window.addEventListener('load', function() {
   // Run when request is complete
   mRequest.onload = function(e) {
     // Only continue if request was successful
@@ -92,12 +102,12 @@ window.addEventListener("load", function() {
       return;
 
     // Attempt to parse response
-    const json = JSON.parse(e.target.responseText);
-    if (typeof json.images === undefined)
+    mJson = JSON.parse(e.target.responseText);
+    if (typeof mJson.images === undefined)
       return;
 
     // Add images to mImage
-    json.images.forEach(function(image) {
+    mJson.images.forEach(function(image) {
       mImages.push(GalleryImage(image));
     });
   };
