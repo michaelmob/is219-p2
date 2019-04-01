@@ -1,3 +1,4 @@
+
 // requestAnim shim layer by Paul Irish
 window.requestAnimFrame = (function(){
   return (
@@ -31,6 +32,14 @@ function animate() {
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
+function swapPhoto() {
+  //Add code here to access the #slideShow element.
+  //Access the img element and replace its source
+  //with a new image from your images array which is loaded 
+  //from the JSON string
+  console.log('swap photo');
+}
+
 // Counter for the mImages array
 var mCurrentIndex = 0;
 
@@ -49,19 +58,20 @@ var mUrl = 'images.json';
 
 // Elements
 var $photo = document.querySelector('#photo');
-var $prev = document.querySelector('#prevPhoto');
-var $next = document.querySelector('#nextPhoto');
-
-
 /*
  * Set $photo img property with current image index.
  */
 function swapPhoto() {
-  //Add code here to access the #slideShow element.
-  //Access the img element and replace its source
-  //with a new image from your images array which is loaded 
-  //from the JSON string
-  console.log('swap photo');
+  // Wrap around to end of array
+  if (mCurrentIndex < 0)
+    mCurrentIndex = mImages.length - 1;
+
+  // Wrap around to beginning of array
+  else if (mCurrentIndex >= mImages.length)
+    mCurrentIndex = 0;
+
+  // Set photo image url
+  $photo.src = mImages[mCurrentIndex].img;
 }
 
 
@@ -94,25 +104,7 @@ function GalleryImage(image) {
 }
 
 
-window.addEventListener('load', function() {
-  // Run when request is complete
-  mRequest.onload = function(e) {
-    // Only continue if request was successful
-    if (e.target.status !== 200)
-      return;
-
-    // Attempt to parse response
-    mJson = JSON.parse(e.target.responseText);
-    if (typeof mJson.images === undefined)
-      return;
-
-    // Add images to mImage
-    mJson.images.forEach(function(image) {
-      mImages.push(GalleryImage(image));
-    });
-  };
-
-  // Create and send GET request
-  mRequest.open('GET', '/' + (GetJSONFileName() || mUrl), true);
-  mRequest.send();
+$(document).ready(function() {
+  // This initially hides the photos' metadata information
+  $('.details').eq(0).hide();
 });
