@@ -70,9 +70,11 @@ function makeGalleryImageOnloadCallback(galleryImage) {
  * Get name of JSON file to fetch from (?json=images.json).
  */
 function GetJSONFileName() {
-  const match = window.location.search
-    .matchAll(/(?!\?\&)json=(.*?)(?:&|$)/gm).next().value;
+  // Match ?json=(.*?) from window.location.search
+  const match = window.location.search.matchAll(/(?!\?\&)json=(.*?)(?:&|$)/gm)
+    .next().value;
 
+  // No matches?
   if (match === undefined)
     return;
 
