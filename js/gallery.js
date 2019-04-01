@@ -1,4 +1,3 @@
-
 // requestAnim shim layer by Paul Irish
 window.requestAnimFrame = (function(){
   return (
@@ -32,14 +31,6 @@ function animate() {
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
-function swapPhoto() {
-  //Add code here to access the #slideShow element.
-  //Access the img element and replace its source
-  //with a new image from your images array which is loaded 
-  //from the JSON string
-  console.log('swap photo');
-}
-
 // Counter for the mImages array
 var mCurrentIndex = 0;
 
@@ -58,6 +49,8 @@ var mUrl = 'images.json';
 
 // Elements
 var $photo = document.querySelector('#photo');
+var $detailsButton = document.querySelector('.');
+var $details = document.querySelector('.details');
 var $prev = document.querySelector('#prevPhoto');
 var $next = document.querySelector('#nextPhoto');
 
@@ -147,4 +140,5 @@ $next.onclick = function() {
 $prev.onclick = function() {
   mCurrentIndex--;
   swapPhoto();
+
 };
