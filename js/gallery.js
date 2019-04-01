@@ -58,6 +58,10 @@ var mUrl = 'images.json';
 
 // Elements
 var $photo = document.querySelector('#photo');
+var $prev = document.querySelector('#prevPhoto');
+var $next = document.querySelector('#nextPhoto');
+
+
 /*
  * Set $photo img property with current image index.
  */
@@ -126,3 +130,21 @@ window.addEventListener('load', function() {
   mRequest.open('GET', '/' + (GetJSONFileName() || mUrl), true);
   mRequest.send();
 });
+
+
+/*
+ * Previous photo button click.
+ */
+$next.onclick = function() {
+  mCurrentIndex++;
+  swapPhoto();
+};
+
+
+/*
+ * Previous photo button click.
+ */
+$prev.onclick = function() {
+  mCurrentIndex--;
+  swapPhoto();
+};
