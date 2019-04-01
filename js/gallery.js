@@ -155,5 +155,10 @@ $prev.onclick = function() {
  * More button click.
  */
 $more.onclick = function() {
-  $more.classList.toggle("active");
+  $more.classList.toggle('active');
+
+  if ($more.classList.contains('active'))
+    $($details).slideDown();
+  else
+    $($details).slideUp();
 };
