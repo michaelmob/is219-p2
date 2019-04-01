@@ -29,9 +29,9 @@ body {
   width: 50px;
   position: absolute;
   left: 300px;
+  top: 330px;
   z-index: 3;
   opacity: .8;
-  bottom: 55px;
   transform: rotate(-90deg);
   transition: 500ms all;
 }
