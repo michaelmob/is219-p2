@@ -36,6 +36,10 @@ body {
   transition: 500ms all;
 }
 
+.moreIndicator:hover {
+  opacity: 0.7;
+}
+
 .moreIndicator.active {
   transform: rotate(90deg) !important;
 }
@@ -58,6 +62,11 @@ body {
 #prevPhoto, #nextPhoto {
   height: 42px;
   width: 42px;
+  transition: 500ms all;
+}
+
+#prevPhoto:hover, #nextPhoto:hover {
+  opacity: 0.5;
 }
 
 #prevPhoto {
