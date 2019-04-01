@@ -1,4 +1,3 @@
-
 // requestAnim shim layer by Paul Irish
 window.requestAnimFrame = (function(){
   return (
@@ -53,8 +52,7 @@ var mImages = [];
 var mJson;
 
 // URL for the JSON to load by default
-// Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = 'insert_url_here_to_image_json';
+var mUrl = 'images.json';
 
 
 /*
@@ -86,7 +84,25 @@ function GalleryImage(image) {
 }
 
 
-$(document).ready(function() {
-  // This initially hides the photos' metadata information
-  $('.details').eq(0).hide();
+window.addEventListener("load", function() {
+  // Run when request is complete
+  mRequest.onload = function(e) {
+    // Only continue if request was successful
+    if (e.target.status !== 200)
+      return;
+
+    // Attempt to parse response
+    const json = JSON.parse(e.target.responseText);
+    if (typeof json.images === undefined)
+      return;
+
+    // Add images to mImage
+    json.images.forEach(function(image) {
+      mImages.push(GalleryImage(image));
+    });
+  };
+
+  // Create and send GET request
+  mRequest.open('GET', '/' + (GetJSONFileName() || mUrl), true);
+  mRequest.send();
 });
